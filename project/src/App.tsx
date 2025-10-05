@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useTheme } from './hooks/useTheme';
 import { useLanguage } from './hooks/useLanguage';
 import { Header } from './components/Header';
@@ -10,12 +11,43 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
+// 🌀 Loader video
+import loaderVideo from './assets/loader.mp4';
+
+// 🖱️ Ripple effect component
+import { RippleEffect } from './components/RippleEffect';
+
+
 function App() {
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen w-screen bg-black">
+        <video
+          src={loaderVideo}
+          autoPlay
+          muted
+          loop
+          className="w-full h-full object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors">
+    <div className="relative min-h-screen bg-white dark:bg-slate-900 transition-colors">
+      {/* 🖱️ Ripple effect overlays entire page */}
+      <RippleEffect />
+
       <Header
         theme={theme}
         toggleTheme={toggleTheme}

@@ -105,3 +105,25 @@ select:focus,
 textarea:focus {
   outline: none;
 }
+
+
+@keyframes ripple-glow {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  100% {
+    transform: scale();
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+.animate-ripple-glow {
+  animation: ripple-glow 1s ease-out forwards;
+}
