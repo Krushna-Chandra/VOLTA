@@ -85,46 +85,56 @@ export const PerformanceStats = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-white dark:bg-slate-800 transition-colors relative overflow-hidden"
+      className="py-16 sm:py-20 bg-white dark:bg-slate-800 transition-colors relative overflow-hidden"
     >
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
+      {/* Gradient background for glow */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-10 left-1/4 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-blue-500 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-1/4 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-purple-500 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-5xl font-bold text-slate-900 dark:text-white mb-4">
+        {/* Header */}
+        <div
+          className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3 sm:mb-4">
             Performance That Electrifies
           </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-2">
             Engineering excellence meets cutting-edge technology
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`group relative transition-all duration-1000 delay-${index * 100} ${
+              className={`group relative transition-all duration-1000 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="relative bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+              <div className="relative bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 sm:p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2 active:scale-95 touch-manipulation">
                 <div className={`inline-flex p-4 rounded-xl ${stat.bgColor} mb-6`}>
-                  <stat.icon className={`h-8 w-8 ${stat.color}`} />
+                  <stat.icon className={`h-7 w-7 sm:h-8 sm:w-8 ${stat.color}`} />
                 </div>
 
                 <div className="mb-2">
-                  <span className="text-5xl font-bold text-slate-900 dark:text-white">
+                  <span className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white">
                     {stat.value}
                   </span>
-                  <span className="text-2xl font-semibold text-slate-600 dark:text-slate-400 ml-1">
+                  <span className="text-lg sm:text-2xl font-semibold text-slate-600 dark:text-slate-400 ml-1">
                     {stat.unit}
                   </span>
                 </div>
 
-                <p className="text-slate-600 dark:text-slate-400 font-medium">{stat.label}</p>
+                <p className="text-slate-600 dark:text-slate-400 font-medium text-sm sm:text-base">
+                  {stat.label}
+                </p>
 
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </div>
@@ -132,52 +142,62 @@ export const PerformanceStats = () => {
           ))}
         </div>
 
-        <div className={`mt-16 max-w-5xl mx-auto transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white shadow-2xl">
-            <h3 className="text-3xl font-bold mb-6">Performance Comparison</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Comparison Section */}
+        <div
+          className={`mt-12 sm:mt-16 max-w-5xl mx-auto transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{ transitionDelay: '600ms' }}
+        >
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 md:p-12 text-white shadow-2xl">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
+              Performance Comparison
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               <div>
-                <h4 className="text-xl font-semibold mb-4 flex items-center">
-                  <Zap className="h-6 w-6 mr-2" />
+                <h4 className="text-lg sm:text-xl font-semibold mb-4 flex items-center">
+                  <Zap className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
                   Electric Vehicle (Ours)
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-3 text-sm sm:text-base">
                   <li className="flex items-center">
                     <div className="h-2 w-2 bg-green-400 rounded-full mr-3" />
-                    <span>70% lower emissions over lifetime</span>
+                    70% lower emissions over lifetime
                   </li>
                   <li className="flex items-center">
                     <div className="h-2 w-2 bg-green-400 rounded-full mr-3" />
-                    <span>Instant torque delivery</span>
+                    Instant torque delivery
                   </li>
                   <li className="flex items-center">
                     <div className="h-2 w-2 bg-green-400 rounded-full mr-3" />
-                    <span>85% cheaper per kilometer</span>
+                    85% cheaper per kilometer
                   </li>
                   <li className="flex items-center">
                     <div className="h-2 w-2 bg-green-400 rounded-full mr-3" />
-                    <span>Minimal maintenance required</span>
+                    Minimal maintenance required
                   </li>
                 </ul>
               </div>
-              <div className="opacity-70">
-                <h4 className="text-xl font-semibold mb-4">Traditional Gas Vehicle</h4>
-                <ul className="space-y-3">
+              <div className="opacity-80">
+                <h4 className="text-lg sm:text-xl font-semibold mb-4">
+                  Traditional Gas Vehicle
+                </h4>
+                <ul className="space-y-3 text-sm sm:text-base">
                   <li className="flex items-center">
                     <div className="h-2 w-2 bg-red-400 rounded-full mr-3" />
-                    <span>High CO₂ emissions</span>
+                    High CO₂ emissions
                   </li>
                   <li className="flex items-center">
                     <div className="h-2 w-2 bg-red-400 rounded-full mr-3" />
-                    <span>Delayed power response</span>
+                    Delayed power response
                   </li>
                   <li className="flex items-center">
                     <div className="h-2 w-2 bg-red-400 rounded-full mr-3" />
-                    <span>Rising fuel costs</span>
+                    Rising fuel costs
                   </li>
                   <li className="flex items-center">
                     <div className="h-2 w-2 bg-red-400 rounded-full mr-3" />
-                    <span>Regular maintenance needed</span>
+                    Regular maintenance needed
                   </li>
                 </ul>
               </div>

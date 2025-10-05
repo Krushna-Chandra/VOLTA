@@ -22,158 +22,84 @@ export const Footer = ({ t }: FooterProps) => {
 
   return (
     <footer className="bg-slate-900 text-white pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          <div>
-            <div className="flex items-center space-x-2 mb-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top grid - brand + links */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12">
+          
+          {/* Brand Section */}
+          <div className="text-center sm:text-left">
+            <div className="flex justify-center sm:justify-start items-center space-x-2 mb-6">
               <Zap className="h-8 w-8 text-blue-500" />
               <span className="text-2xl font-bold">VOLTA</span>
             </div>
             <p className="text-slate-400 mb-6 leading-relaxed">
               Pioneering the electric revolution in Eastern India with premium vehicles that combine luxury, performance, and sustainability.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="p-2 bg-slate-800 hover:bg-blue-600 rounded-full transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-slate-800 hover:bg-blue-600 rounded-full transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-slate-800 hover:bg-blue-600 rounded-full transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-slate-800 hover:bg-blue-600 rounded-full transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-slate-800 hover:bg-blue-600 rounded-full transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
+            <div className="flex justify-center sm:justify-start space-x-4">
+              {[Facebook, Twitter, Instagram, Youtube, Linkedin].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="p-2 bg-slate-800 hover:bg-blue-600 rounded-full transition-colors"
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div>
+          {/* Models */}
+          <div className="text-center sm:text-left">
             <h3 className="text-lg font-bold mb-6">Models</h3>
             <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  LX 400e
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  MX 550e
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  RX Performance
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Compare Models
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Configurator
-                </a>
-              </li>
+              {['LX 400e', 'MX 550e', 'RX Performance', 'Compare Models', 'Configurator'].map((model, i) => (
+                <li key={i}>
+                  <a href="#" className="text-slate-400 hover:text-white transition-colors">
+                    {model}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
+          {/* Company */}
+          <div className="text-center sm:text-left">
             <h3 className="text-lg font-bold mb-6">Company</h3>
             <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Press & Media
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Sustainability
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Investor Relations
-                </a>
-              </li>
+              {['About Us', 'Careers', 'Press & Media', 'Sustainability', 'Investor Relations'].map((item, i) => (
+                <li key={i}>
+                  <a href="#" className="text-slate-400 hover:text-white transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
+          {/* Support */}
+          <div className="text-center sm:text-left">
             <h3 className="text-lg font-bold mb-6">Support</h3>
             <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Charging Network
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Service Centers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Owner's Manual
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                  Contact Support
-                </a>
-              </li>
+              {['FAQs', 'Charging Network', 'Service Centers', "Owner's Manual", 'Contact Support'].map((item, i) => (
+                <li key={i}>
+                  <a href="#" className="text-slate-400 hover:text-white transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-8 mb-8">
+        {/* Newsletter Section */}
+        <div className="border-t border-slate-800 pt-10 mb-10">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-2xl font-bold mb-4 flex items-center justify-center space-x-2">
               <Mail className="h-6 w-6 text-blue-500" />
               <span>{t('footer.newsletter')}</span>
             </h3>
-            <p className="text-slate-400 mb-6">
-              Stay updated with the latest news, offers, and innovations
-            </p>
+            <p className="text-slate-400 mb-6">Stay updated with the latest news, offers, and innovations</p>
+
             {subscribed ? (
               <div className="bg-green-500/20 border border-green-500/50 rounded-full px-6 py-3 text-green-400 font-medium">
                 ✓ Successfully subscribed!
@@ -200,24 +126,18 @@ export const Footer = ({ t }: FooterProps) => {
           </div>
         </div>
 
+        {/* Bottom Section */}
         <div className="border-t border-slate-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
             <p className="text-slate-400 text-sm">
-              © 2024 VOLTA Electric Vehicles. All rights reserved.
+              © {new Date().getFullYear()} VOLTA Electric Vehicles. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                Cookie Policy
-              </a>
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                Legal
-              </a>
+              {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Legal'].map((item, i) => (
+                <a key={i} href="#" className="text-slate-400 hover:text-white transition-colors">
+                  {item}
+                </a>
+              ))}
             </div>
           </div>
         </div>
